@@ -40,7 +40,7 @@ export const projects: Project[] = [
       "Langfuse",
       "Vercel",
     ],
-    bug: "query_events originally ran without service or time scoping, pulling in unrelated historical events and once producing a false “no failures” conclusion. Every query is now scoped to the service and time window.",
+    bug: "query_events originally ran without service or time scoping, pulling in unrelated historical events and once producing a false \"no failures\" conclusion. Every query is now scoped to the service and time window.",
   },
   {
     name: "Lumen / CogniLead",
@@ -51,7 +51,7 @@ export const projects: Project[] = [
   },
   {
     name: "Captur",
-    status: "Enterprise case study",
+    status: "Demo in verification", // was "Enterprise case study" — confirm this is real or I'll leave it as the others
     problem:
       "AI meeting intelligence that turns meetings into structured minutes.",
     stack: [
@@ -62,12 +62,14 @@ export const projects: Project[] = [
       "Railway",
       "Vercel",
     ],
+    bug: "", // fill in a real bug before shipping — no placeholder text
   },
   {
     name: "AskMyDocs",
     status: "Demo in verification",
     problem: "A RAG-based document question-and-answer tool.",
     stack: ["FAISS", "HuggingFace embeddings", "Groq", "HuggingFace Spaces"],
+    bug: "", // fill in a real bug before shipping — no placeholder text
   },
 ];
 
