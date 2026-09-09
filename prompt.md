@@ -144,7 +144,7 @@ npx shadcn@latest add "https://magicui.design/r/terminal.json"
 ```tsx
 <p className="font-mono text-sm text-neutral-300 leading-relaxed">
   <span className="text-emerald-400 font-bold">&gt; Currently building: </span>
-  <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-extrabold">Runa</span> 
+  <span className="bg-linear-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-extrabold">Runa</span> 
   — Custom AI voice agent for small businesses (restaurants & dental clinics). 
   Automates phone call orders with real-time dialogue using LiveKit & LangGraph.
 </p>
