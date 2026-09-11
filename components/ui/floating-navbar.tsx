@@ -7,6 +7,7 @@ import { Switch } from "@/components/ui/switch";
 import { navigationItems } from "@/lib/constants";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
+import Image from "next/image";
 
 export function FloatingNavbar() {
   const { dark, setDark } = useTheme();
@@ -58,8 +59,13 @@ export function FloatingNavbar() {
         className="flex items-center gap-2 text-neutral-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
       >
         <span className="font-mono font-medium text-sm tracking-tight flex items-center gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-emerald-500" />
-          Ahmad
+          <Image 
+            src={"/ahmad's_picture_header_portfolio.jpeg"}
+            alt="Ahmad Imran Picture"
+            width={40}
+            height={30}
+            className="object-cover rounded-full"
+          />
         </span>
       </a>
 

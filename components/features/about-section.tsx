@@ -6,7 +6,7 @@ import { FADE_UP_VARIANT, STAGGER_CONTAINER } from "@/lib/motion";
 export function AboutSection() {
   return (
     <section id="about" className="py-28 relative border-t border-neutral-200 dark:border-white/10 transition-colors duration-300">
-      <div className="max-w-4xl mx-auto px-6 sm:px-8">
+      <div className="max-w-4xl mx-auto gap-6 px-6 sm:px-8">
         <motion.div
           variants={STAGGER_CONTAINER}
           initial="hidden"
