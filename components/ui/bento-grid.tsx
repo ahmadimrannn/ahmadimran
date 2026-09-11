@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import React, { useRef, useState, CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
-/* ── Grid container ────────────────────────────────────────── */
 interface BentoGridProps {
   children: React.ReactNode;
   className?: string;
@@ -11,52 +10,90 @@ interface BentoGridProps {
 
 export function BentoGrid({ children, className }: BentoGridProps) {
   return (
-    <div className={cn("bento-grid", className)}>
+    <div
+      className={cn(
+        "grid grid-cols-1 md:grid-cols-12 gap-6 max-w-7xl mx-auto",
+        className
+      )}
+    >
       {children}
     </div>
   );
 }
 
-/* ── Card with mouse-tracking spotlight ────────────────────── */
 interface BentoCardProps {
   children: React.ReactNode;
   className?: string;
-  cols?: number;
+  colSpan?: 4 | 6 | 8 | 12;
 }
 
-export function BentoCard({ children, className, cols = 6 }: BentoCardProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [spotlight, setSpotlight] = useState({ x: 0, y: 0, opacity: 0 });
+export function BentoCard({
+  children,
+  className,
+  colSpan = 6,
+}: BentoCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [mousePosition, setMousePosition] = useState({ x: -1000, y: -1000 });
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
-    setSpotlight({
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    setMousePosition({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
-      opacity: 1,
     });
   };
 
-  const colClass = `bento-col-${cols}`;
+  const colSpanClasses = {
+    4: "md:col-span-4",
+    6: "md:col-span-6",
+    8: "md:col-span-8",
+    12: "md:col-span-12",
+  };
 
   return (
     <div
-      ref={ref}
-      className={cn("bento-card", colClass, className)}
+      ref={cardRef}
       onMouseMove={handleMouseMove}
-      onMouseLeave={() => setSpotlight((s) => ({ ...s, opacity: 0 }))}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        setMousePosition({ x: -1000, y: -1000 });
+      }}
+      style={
+        {
+          "--mouse-x": `${mousePosition.x}px`,
+          "--mouse-y": `${mousePosition.y}px`,
+        } as CSSProperties
+      }
+      className={cn(
+        "group relative rounded-3xl border border-neutral-200/90 bg-white/90 p-6 sm:p-8 backdrop-blur-xl transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-sm hover:border-neutral-300 dark:border-white/10 dark:bg-neutral-950/80 dark:hover:border-white/20 dark:shadow-xl",
+        colSpanClasses[colSpan],
+        className
+      )}
     >
-      {/* spotlight glow */}
+      {/* Mouse-following spotlight border / glow overlay */}
       <div
-        className="bento-spotlight"
-        aria-hidden="true"
+        className="pointer-events-none absolute -inset-px rounded-3xl transition-opacity duration-300"
         style={{
-          background: `radial-gradient(640px circle at ${spotlight.x}px ${spotlight.y}px, rgba(61,220,132,0.06), transparent 40%)`,
-          opacity: spotlight.opacity,
+          opacity: isHovered ? 1 : 0,
+          background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(16,185,129,0.12), transparent 40%)`,
         }}
+        aria-hidden="true"
       />
-      <div className="bento-card-inner">{children}</div>
+
+      {/* Subtle border highlight */}
+      <div
+        className="pointer-events-none absolute -inset-px rounded-3xl transition-opacity duration-300"
+        style={{
+          opacity: isHovered ? 0.6 : 0,
+          border: "1px solid rgba(16,185,129,0.25)",
+        }}
+        aria-hidden="true"
+      />
+
+      <div className="relative z-10 flex flex-col h-full w-full">{children}</div>
     </div>
   );
 }

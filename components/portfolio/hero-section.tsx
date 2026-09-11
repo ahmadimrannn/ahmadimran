@@ -26,8 +26,7 @@ export function HeroSection() {
                     Available for select collaborations
                 </p>
                 <p id="hero-title" className="font-geist tracking-tighter text-3xl md:text-7xl">
-                    Engineering autonomous agency.
-                    <span>From reactive LLMs to accountable execution.</span>
+                    Engineering autonomous agency by building AI Agents.
                 </p>
                 <button
                     className="hero-microcopy my-1 ml-1"

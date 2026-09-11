@@ -1,4 +1,4 @@
-import { skillGroups } from "@/lib/portfolio-data";
+import { skillGroups, SkillGroup } from "@/lib/portfolio-data";
 
 export function SkillsSection() {
   return (
@@ -9,7 +9,7 @@ export function SkillsSection() {
       <p className="section-kicker">Stack</p>
       <h2 id="skills-title">Tools I reach for.</h2>
       <dl>
-        {skillGroups.map((skill) => (
+        {skillGroups.map((skill: SkillGroup) => (
           <div key={skill.label}>
             <dt>{skill.label}</dt>
             <dd>{skill.value}</dd>

@@ -1,26 +1,28 @@
-import { Footer } from "@/components/portfolio/footer";
-import { Header } from "@/components/portfolio/header";
-import { HeroSection } from "@/components/portfolio/hero-section";
-import { AboutSection } from "@/components/portfolio/sections/about-section";
-import { ContactSection } from "@/components/portfolio/sections/contact-section";
-import { NowSection } from "@/components/portfolio/sections/now-section";
-import { ProjectsSection } from "@/components/portfolio/sections/projects-section";
-import { SkillsSection } from "@/components/portfolio/sections/skills-section";
-import { ThemeProvider } from "@/components/theme-provider";
+import { FloatingNavbar } from "@/components/ui/floating-navbar";
+import { HeroSection } from "@/components/features/hero-section";
+import { AboutSection } from "@/components/features/about-section";
+import { ProjectsBento } from "@/components/features/projects-bento";
+import { NowTerminal } from "@/components/features/now-terminal";
+import { TechMarquee } from "@/components/features/tech-marquee";
+import { ContactFooter } from "@/components/features/contact-footer";
 
 export default function Home() {
   return (
-    <ThemeProvider>
-      <Header />
-      <main>
+    <div className="relative min-h-screen bg-(--bg) text-(--text) transition-colors duration-300 overflow-x-hidden selection:bg-emerald-500/30 selection:text-emerald-500">
+      {/* Floating Glassmorphic Navbar */}
+      <FloatingNavbar />
+
+      {/* Single-page orchestrator sections */}
+      <main id="main-content" className="relative z-10 flex flex-col">
         <HeroSection />
         <AboutSection />
-        <ProjectsSection />
-        <NowSection />
-        <SkillsSection />
-        <ContactSection />
+        <ProjectsBento />
+        <NowTerminal />
+        <TechMarquee />
       </main>
-      <Footer />
-    </ThemeProvider>
+
+      {/* High-impact contact & footer */}
+      <ContactFooter />
+    </div>
   );
 }
