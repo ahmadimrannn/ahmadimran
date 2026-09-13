@@ -8,16 +8,22 @@ import { techStackRow1, techStackRow2, TechItem } from "@/lib/constants";
 import { FADE_UP_VARIANT, STAGGER_CONTAINER } from "@/lib/motion";
 
 function TechPill({ item }: { item: TechItem }) {
+    
+  const iconSrc =
+    item.iconUrl ||
+    `https://cdn.simpleicons.org/${item.iconSlug}`;
+
   return (
     <Tooltip content={item.tooltip}>
       <div className="flex items-center gap-3 bg-white/90 border border-neutral-200 shadow-xs text-neutral-800 hover:border-emerald-500 hover:bg-emerald-50/50 dark:bg-neutral-900/60 dark:border-white/10 dark:text-neutral-200 dark:hover:border-emerald-500/40 dark:hover:bg-neutral-800/80 backdrop-blur-md rounded-xl px-5 py-3 transition-all duration-300 cursor-pointer group shrink-0">
-        <div className="w-5 h-5 relative flex items-center justify-center text-neutral-600 group-hover:text-emerald-600 dark:text-neutral-400 dark:group-hover:text-emerald-400 transition-colors">
+        <div className="w-5 h-5 relative flex items-center justify-center shrink-0">
           <Image
-            src={`/icons/${item.iconName}.svg`}
+            src={iconSrc}
             alt={`${item.name} icon`}
-            width={18}
-            height={18}
-            className="opacity-80 group-hover:opacity-100 transition-opacity dark:invert"
+            width={20}
+            height={20}
+            className="w-5 h-5 object-contain"
+            unoptimized // Bypasses Next.js image optimization for external CDNs
           />
         </div>
         <span className="font-mono text-sm font-medium text-neutral-800 group-hover:text-neutral-950 dark:text-neutral-200 dark:group-hover:text-white transition-colors">
@@ -54,7 +60,6 @@ export function TechMarquee() {
         </motion.div>
       </div>
 
-      {/* Dual opposing horizontal marquees */}
       <div className="flex flex-col gap-5">
         <Marquee speed="slow" pauseOnHover={true} reverse={false} gap="1.25rem">
           {techStackRow1.map((item) => (

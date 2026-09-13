@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
@@ -9,22 +10,23 @@ type ThemeContextValue = {
 };
 
 const ThemeContext = createContext<ThemeContextValue>({
-  dark: true,
+  dark: false,
   setDark: () => {},
   toggleTheme: () => {},
 });
 
 function getInitialTheme(): boolean {
-  if (typeof window === "undefined") return true;
+  if (typeof window === "undefined") return false;
   const storedTheme = window.localStorage.getItem("theme");
   if (storedTheme) {
-    return storedTheme === "dark";
+    return storedTheme === "dark"; // returns true ONLY if user explicitly chose dark
   }
-  return true; // default to dark theme
+  return false; // defaults to light theme (dark = false)
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [dark, setDark] = useState<boolean>(true);
+  // Default React state to light theme (false = light, true = dark)
+  const [dark, setDark] = useState<boolean>(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

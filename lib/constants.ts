@@ -14,11 +14,12 @@ export type Project = {
   bug: string;
 };
 
-export type TechItem = {
+export interface TechItem {
   name: string;
-  iconName: string;
+  iconSlug?: string;
+  iconUrl?: string;
   tooltip: string;
-};
+}
 
 /* ── Navigation Items ────────────────────────────────────────── */
 export const navigationItems: NavigationItem[] = [
@@ -88,32 +89,32 @@ export const projects: Project[] = [
 export const techStackRow1: TechItem[] = [
   {
     name: "LangGraph",
-    iconName: "langgraph",
+    iconSlug: "langchain", // Uses LangChain branding slug
     tooltip: "Stateful multi-actor agent orchestration and cyclic workflows",
   },
   {
     name: "FastAPI",
-    iconName: "fastapi",
+    iconSlug: "fastapi",
     tooltip: "High-performance async Python backend & SSE streaming endpoints",
   },
   {
     name: "Python",
-    iconName: "python",
+    iconSlug: "python",
     tooltip: "Primary language for LLM pipelines, tooling, and backend logic",
   },
   {
     name: "Postgres",
-    iconName: "postgres",
+    iconSlug: "postgresql",
     tooltip: "Relational persistence for agent sessions, state checkpoints, and logs",
   },
   {
     name: "pgvector",
-    iconName: "pgvector",
+    iconSlug: "postgresql",
     tooltip: "Vector embeddings and cosine similarity retrieval for long-term agent memory",
   },
   {
     name: "Neon",
-    iconName: "neon",
+    iconUrl: "https://svgl.app/library/neon.svg",
     tooltip: "Serverless Postgres with instant branching for eval testing environments",
   },
 ];
@@ -121,27 +122,27 @@ export const techStackRow1: TechItem[] = [
 export const techStackRow2: TechItem[] = [
   {
     name: "Langfuse",
-    iconName: "langfuse",
+    iconUrl: "https://langfuse.com/icon.svg",
     tooltip: "Production LLM observability, trace spans, and regression evaluations",
   },
   {
     name: "LiveKit",
-    iconName: "livekit",
+    iconUrl: "https://livekit.io/favicon.ico",
     tooltip: "WebRTC infrastructure for real-time bidirectional audio & voice agents",
   },
   {
     name: "Groq",
-    iconName: "groq",
+    iconUrl: "https://svgl.app/library/groq.svg",
     tooltip: "Ultra-low-latency LPU inference for fast conversational turns",
   },
   {
     name: "React",
-    iconName: "react",
+    iconSlug: "react",
     tooltip: "Component-driven UI library for high-speed client interfaces",
   },
   {
     name: "Vite",
-    iconName: "vite",
+    iconSlug: "vite",
     tooltip: "Blazing fast frontend build tooling and local development",
   },
 ];
