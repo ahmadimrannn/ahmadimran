@@ -1,271 +1,160 @@
-Update this project according to these instructions.
+# Portfolio Update: Real Project Cards + Dedicated Project Pages
+
+## Overview
+
+Five separate projects exist in this portfolio: **SentryLoop, CogniLead, Lumen, Captur, and AskMyDocs**. Lumen and CogniLead are two different, separately built and deployed projects — do not merge them into one card or one page anywhere in the codebase.
+
+Two things need building:
+1. Real, non-mock project cards on the homepage
+2. A dedicated detail page per project, linked from each card's "View Project" button
 
 ---
 
-## 1. Complete Production Folder Architecture
+## Part 1: Project Card (homepage)
 
-```text
-├── app/
-│   ├── layout.tsx                # Lenis provider, font imports, Sonner toast, global metadata
-│   ├── page.tsx                  # Single-page orchestrator with section observers
-│   ├── globals.css               # Tailwind directives, custom CSS primitives, WebGL canvas layer
-│   └── api/
-│       └── contact/route.ts      # Rate-limited Resend / nodemailer email dispatcher
-├── components/
-│   ├── ui/                       # Free, atomic open-source UI primitives (shadcn/Aceternity/MagicUI)
-│   │   ├── bento-grid.tsx
-│   │   ├── floating-navbar.tsx
-│   │   ├── shimmer-button.tsx
-│   │   ├── terminal.tsx
-│   │   ├── marquee.tsx
-│   │   ├── tooltip.tsx
-│   │   ├── animated-beam.tsx
-│   │   └── aurora-background.tsx
-│   ├── features/                 # Modular, feature-isolated page sections
-│   │   ├── hero-section.tsx      # WebGL hero, magnetic CTAs, pulse beacon
-│   │   ├── about-section.tsx     # Interactive bio card & live location widget
-│   │   ├── projects-bento.tsx    # Asymmetric spotlight grid & interactive tab views
-│   │   ├── now-terminal.tsx      # Live macOS-style status terminal
-│   │   ├── tech-marquee.tsx      # Dual-tier opposing infinite marquee
-│   │   └── contact-footer.tsx    # High-impact CTA, live clock, 1-click email copy
-│   └── shared/
-│       ├── lenis-provider.tsx    # Inertial smooth-scroll lifecycle wrapper
-│       ├── dynamic-cursor.tsx    # WebGL/Framer Motion custom magnetic cursor tracker
-│       └── status-badge.tsx      # Live status indicator primitive with ping ring
-├── lib/
-│   ├── motion.ts                 # Centralized Framer Motion spring curves & stagger variants
-│   ├── utils.ts                  # Tailwind class merge helper (clsx + tailwind-merge)
-│   └── constants.ts             # Static data (projects, stack details, nav items)
-└── public/
-    ├── media/                    # High-DPI .mp4 / .webm micro-loops for project cards
-    └── icons/                    # Clean monochrome vector SVGs (LangGraph, FastAPI, etc.)
+Replace all mock data in the current project card component with the real data below. Each card needs:
 
+- **Project name**
+- **One-line description** — 7 words or fewer, already written per project below, do not rewrite these longer
+- **Project image** — pulled from `public/projects-pictures/`. Use Next.js `<Image>` with `fill` inside a fixed-aspect-ratio container (`aspect-video` or similar), not a raw `<img>` tag, so layout doesn't shift while images load
+- **Button at the bottom of the card**: text "View Project" followed by a right-arrow icon (use `ArrowRight` from `lucide-react`), that navigates to that project's dedicated page
+
+### Real project data
+
+The per-project folders already exist at `app/projects/<folder-name>/`. Use these exact folder names as the `path` field, don't invent your own slug naming:
+
+```typescript
+export const projects: Project[] = [
+  {
+    path: "sentry-loop",
+    name: "SentryLoop",
+    featured: true,
+    tagline: "Autonomous agent that investigates production incidents",
+    image: "/projects-pictures/sentryloop.png",   
+    status: "Live",
+    stack: ["LangGraph", "FastAPI", "Postgres + pgvector", "Neon", "Langfuse", "Vercel"],
+    liveUrl: "https://sentryloop.vercel.app",
+    githubUrl: "https://github.com/ahmadimrannn/sentry-loop",  
+  },
+  {
+    path: "cognilead",
+    name: "CogniLead",
+    tagline: "Qualifies and enriches inbound leads automatically",
+    image: "/projects-pictures/cognilead.png",
+    status: "Live",
+    stack: ["LangGraph", "FastAPI", "HubSpot API", "Tavily", "Postgres", "Vercel"],
+    liveUrl: "https://cogni-lead.vercel.app",
+    githubUrl: "https://github.com/ahmadimrannn/CogniLead",
+  },
+  {
+    path: "lumen",
+    name: "Lumen",
+    tagline: "Multi-node LangGraph pipeline for deep research",
+    image: "/projects-pictures/lumen.png",
+    status: "Live",
+    stack: ["LangGraph", "FastAPI", "Postgres", "Railway"],
+    liveUrl: "https://lumenai-multi-agent-research-assistant-production.up.railway.app/",    
+    githubUrl: "https://github.com/ahmadimrannn/LumenAI-Multi-Agent-Research-Assistant",  
+  },
+  {
+    path: "captur",
+    name: "Captur",
+    tagline: "Turns meetings into structured minutes automatically",
+    image: "/projects-pictures/captur.png",     
+    status: "Live",
+    stack: ["LangChain", "FastAPI", "Groq", "React / Vite", "Railway", "Vercel"],
+    liveUrl: "https://captur-sand.vercel.app",
+    githubUrl: "https://github.com/ahmadimrannn/captur",  
+  },
+  {
+    path: "ask-my-docs",
+    name: "AskMyDocs",
+    tagline: "Answers questions directly from your documents",
+    image: "/projects-pictures/ask-my-docs.png",     
+    status: "Live",
+    stack: ["FAISS", "HuggingFace embeddings", "Groq", "HuggingFace Spaces"],
+    liveUrl: "https://huggingface.co/spaces/ahmadimran/ask-my-docs",    
+    githubUrl: "https://github.com/ahmadimrannn/langchain_tutorial_with_projects/tree/main/projects/rag_knowledge_base_project",  
+  },
+];
 ```
+
+Each card's "View Project" button links to `/projects/${project.path}` (e.g. `/projects/sentry-loop`, `/projects/cognilead`).
+
+**Before running this**: check the actual filenames inside `public/projects-pictures/` and correct the `image` paths above to match exactly — don't assume the naming convention.
 
 ---
 
-## 2. Component-by-Component Micro-Detail Blueprint
+## Part 2: Dedicated Project Pages
 
-### Component 1: Floating Glassmorphic Header & Navigation
+### Routing
 
-* **Current Bug:** Text links, sun/moon icons, and the theme toggle are crammed together on a single baseline, colliding with page text.
-* **Exact UI Library Primitive:** **Floating Navbar** (`Aceternity UI`) + **Segmented Control** (`Origin UI`).
-* **Command:**
-```bash
-npx shadcn@latest add "https://ui.aceternity.com/r/floating-navbar.json"
+The five project folders already exist as static routes: `app/projects/sentry-loop/`, `app/projects/cognilead/`, `app/projects/lumen/`, `app/projects/captur/`, `app/projects/ask-my-docs/`. Each needs a `page.tsx` inside it. To avoid duplicating the same template five times, build one shared component (e.g. `components/project-page-template.tsx`) that all five `page.tsx` files import and render, each passing in its own entry from the `projects` data array (matched by `path`). Each `page.tsx` file should stay short, just importing the template and the shared data array and rendering the right entry, not duplicating the full page markup five times.
 
-```
+### Page structure (every project page follows this same template)
 
+1. **Back button** — top of the page, before anything else. Text "Back" with a left-arrow icon (`ArrowLeft` from `lucide-react`), links back to the homepage (`/` or `/#projects` to return directly to the projects section). Must be present and functional on every project page.
 
-* **Layout & Styling Specifications:**
-* **Position:** `fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-2xl`.
-* **Glass Effect:** `bg-neutral-950/70 backdrop-blur-xl border border-white/10 shadow-[0_0_30px_rgba(0,0,0,0.5)] rounded-full px-5 py-2.5 flex items-center justify-between`.
-* **Interactive Active Pill:** Wrap links (`About`, `Projects`, `Now`, `Contact`) in a relative parent. Use Framer Motion’s `layoutId="activeTab"` so a translucent `bg-white/10 rounded-full` pill slides underneath the active item as the user scrolls.
-* **Theme & Utility Separator:** Add a vertical line divider `h-4 w-[1px] bg-white/15 mx-3` between the navigation links and the theme toggle.
-* **Micro-Detail:** Add subtle click sound effects using Web Audio API on link press (`volume: 0.05`).
+2. **Header** — project name as the page's main heading, tagline beneath it, stack tags, and the live demo / GitHub links.
 
+3. **Project image** — displayed prominently near the top, same `public/projects-pictures/` source as the card, using Next.js `<Image>` with explicit dimensions or `fill` in an aspect-ratio container.
 
+4. **The Problem** — what was broken or missing, why it mattered.
 
----
+5. **The Solution** — what was built and why it was built that way, not just a stack list restated as prose.
 
-### Component 2: Hero Section & Ambient Lighting Canvas
+6. **Tech Stack** — same tags as the card, can be shown again here in more detail (e.g. why each piece was chosen).
 
-* **Current Bug:** Next.js `N` floating dev badge in the bottom-left collides directly with the `[View Projects]` CTA button.
-* **Exact UI Library Primitives:** **Aurora Background** (`Aceternity UI`) + **Shimmer Button** (`Magic UI`).
-* **Commands:**
-```bash
-npx shadcn@latest add "https://ui.aceternity.com/r/aurora-background.json"
-npx shadcn@latest add "https://magicui.design/r/shimmer-button.json"
+7. **A Real Bug, In Detail** — the actual bug, what caused it, how it was found, how it was fixed. This is the most important section on the page, give it real space.
 
-```
+8. **Decisions and Tradeoffs** — real architectural or design decisions made and why, not generic engineering platitudes.
 
+9. **Lessons Learned** — what would be done differently, what you'd approach differently now.
 
-* **Layout & Styling Specifications:**
-* **Dev Artifact Cleanup:** Remove the Next.js `N` overlay completely or hide it using `hidden md:hidden` in production builds.
-* **Headline Fix:** Correct punctuation and add a missing space: `Engineering autonomous agency. From reactive LLMs to accountable execution.` (Fix missing space between full stop and "From").
-* **Availability Pill:** Rebuild as `<span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span>` inside a `rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-400` container.
-* **Magnetic CTA Buttons:**
-* `[View Projects]`: Primary `ShimmerButton` with emerald accent glow (`background: #052e16`, `shimmerColor: #34d399`).
-* `[Get in Touch]`: Secondary outline button with magnetic hover physics (`framer-motion` tracking cursor proximity within `80px`).
+### Real content for SentryLoop, CogniLead, and Lumen
 
+**SentryLoop**
+- Problem: On-call engineers manually dig through logs to find root causes when something breaks. SentryLoop investigates independently instead.
+- Solution: An autonomous agent that, given an error signal, investigates real production logs and event history from Ahmad's own deployed apps (Lumen and CogniLead), forms and tests a root-cause hypothesis over a variable number of steps (no fixed step count), and drafts a fix proposal gated behind human approval. It never applies a fix itself, propose-only is enforced even at the database level via a CHECK constraint.
+- Real bug: `query_events` originally ran with no service or time scoping, which pulled in unrelated historical events and once produced a false "no failures" conclusion. Every query is now scoped to the specific service and time window.
+- Decisions: Investigation summaries are rewritten in full each step (capped around 150-200 words) and fully replace the raw evidence log in what gets shown to the model, keeping token growth bounded instead of replaying the full evidence history into every prompt. The manual while-loop investigation logic was later rewritten as a real LangGraph StateGraph specifically to support Postgres checkpointing for pause/resume on the human-approval step.
+- Lessons: Several real bugs only surfaced under forced multi-step test runs (8+ and 13+ steps), not short happy-path tests, including a state field that was computed but never actually returned from a step, meaning it silently never persisted.
 
+**CogniLead**
+- Problem: Inbound leads need qualification and CRM enrichment, normally a manual, repetitive task for a sales or ops team.
+- Solution: A LangGraph agent that extracts and scores lead information, enriches company data via Tavily search, routes leads through a deterministic human-review gate for borderline cases, and writes qualified leads into HubSpot with full dedup logic for both contacts and companies.
+- Real bug: Company enrichment once found a same-named but unrelated company and scored it as verified. Fixed by adding `enrichment_status` and `name_match_confidence` fields so a mismatch is flagged instead of silently trusted.
+- Decisions: Leads with no stated company name skip company creation entirely rather than fabricating a placeholder company, the contact is still created with a note flagging the missing company name.
+- Lessons: A resume bug where `graph.invoke` was called fresh instead of resuming via the existing `thread_id` made the workflow look like it was restarting from scratch on every resume, a reminder that checkpoint resume logic needs its own explicit test, not just its happy path.
 
+**Lumen**
+- Problem: Deep research requires cross-checking multiple sources and catching contradictions, which a simple single-pass LLM call doesn't do reliably.
+- Solution: A six-node LangGraph pipeline (Query Classifier → Researcher → Source Critic → Evidence Extractor → Conflict Detector → Report Writer) with human-in-the-loop interrupt/resume support.
+- Real bug: `conflict_detector.py` was silently forwarding malformed LLM output to `report_writer` even after already computing a `parse_failed` flag that nothing checked, meaning failures went unnoticed while the final report still looked polished. Fixed by logging it as a real `conflicts_analysis_failure` event instead of passing it forward silently.
+- Decisions: Persistence was moved from in-memory to a real checkpointer (SQLite, later Postgres) specifically to stop state loss on restart, since Lumen is a long-running multi-step pipeline, not a single request-response call.
+- Lessons: The root cause of most extraction failures turned out to be an unset `max_tokens` default causing systematic truncation, not input size as originally assumed, a reminder to check output constraints before assuming the input is the problem.
 
+### Captur and AskMyDocs
 
----
-
-### Component 3: Asymmetric Bento Grid Projects Showcase
-
-* **Current Bug:** Flat linear markdown text blocks, placeholder disclaimers, and lack of visual depth.
-* **Exact UI Library Primitives:** **Bento Grid** (`Aceternity UI`) + **Animated Beam** (`Magic UI`) + **Tabs Primitive** (`shadcn/ui`).
-* **Commands:**
-```bash
-npx shadcn@latest add "https://ui.aceternity.com/r/bento-grid.json"
-npx shadcn@latest add "https://magicui.design/r/animated-beam.json"
-npx shadcn@latest add tabs
-
-```
-
-
-* **Layout & Styling Specifications:**
-* **Grid Matrix:** `grid grid-cols-1 md:grid-cols-12 gap-6 max-w-7xl mx-auto`.
-* **Featured Card (`SentryLoop`):** Spans `md:col-span-8`.
-* **Secondary Card (`Lumen / CogniLead`):** Spans `md:col-span-4`.
-* **Tertiary Cards (`Captur` & `AskMyDocs`):** Span `md:col-span-6` each.
-
-
-* **Mouse-Following Spotlight Mask:** Attach an `onMouseMove` listener to each card container to pass `--mouse-x` and `--mouse-y` CSS variables, creating a subtle 1px radial border glow (`radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(52,211,153,0.15), transparent 40%)`).
-* **Tabbed Internal Card Views:**
-* `Overview`: Displays key metrics (e.g., `Latency: <450ms`, `Accuracy: 98.4%`) and high-DPI video loop (`.webm`).
-* `Architecture`: Renders interactive **Animated Beam** SVGs showing dynamic data packets travelling between nodes (`Agent Router` ➔ `Postgres Memory` ➔ `Human Approval Gate`).
-* `Production Learnings`: Replaces raw dumping with expandable accordion bullet points.
-
-
-* **Status Badge Upgrade:** Eliminate all disclaimers like *"Demo in verification"*. Replace with `<Badge className="border-emerald-500/30 text-emerald-400 bg-emerald-500/10">● Verified Live Runtime</Badge>`.
-
-
+Leave the Problem, Solution, Real Bug, Decisions, and Lessons Learned sections present but empty (or with a short "content coming soon" placeholder that's visually honest about being incomplete, not filled with invented content) for these two. Real content will be added later.
 
 ---
 
-### Component 4: "Now" Section Status Terminal
+## Design consistency requirements
 
-* **Current Bug:** Broken markdown formatting exposing raw syntax (`***Runa*** **, a custom AI voice agent...**`).
-* **Exact UI Library Primitive:** **Terminal Animation** (`Magic UI`).
-* **Command:**
-```bash
-npx shadcn@latest add "https://magicui.design/r/terminal.json"
+- **Headings**: `font-geist` with `tracking-tighter`. Do not use `font-bold` on any heading anywhere on these pages, use the font's regular or medium weight only.
+- **Body text**: `font-inter` for everything that isn't a heading.
+- Match the same dark theme, color tokens, and spacing system already established on the homepage — the project pages should feel like the same site, not a separate design.
+- **Responsiveness**: every element on both the cards and the project pages must work correctly on mobile, tablet, and desktop breakpoints. Test the image aspect ratios, the back button placement, and the stack tag wrapping specifically at narrow widths, these are the most common places responsiveness breaks.
 
-```
+## Deliverable checklist
 
-
-* **Layout & Styling Specifications:**
-* **Window Shell:** A dark glass card (`bg-black/80 border border-white/10 rounded-2xl p-6 shadow-2xl`) featuring macOS window controls (red, yellow, text-green dots) and a top-center tab header reading `live_agent_status.sh — zsh`.
-* **Type Cleanup:** Parse project references cleanly:
-```tsx
-<p className="font-mono text-sm text-neutral-300 leading-relaxed">
-  <span className="text-emerald-400 font-bold">&gt; Currently building: </span>
-  <span className="bg-linear-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-extrabold">Runa</span> 
-  — Custom AI voice agent for small businesses (restaurants & dental clinics). 
-  Automates phone call orders with real-time dialogue using LiveKit & LangGraph.
-</p>
-
-```
-
-
-
-
-
----
-
-### Component 5: Tech Stack Dual-Marquee & Hover Tooltips
-
-* **Current Bug:** Plain bulleted list on pitch-black background with excessive vertical whitespace.
-* **Exact UI Library Primitives:** **Marquee** (`Magic UI`) + **Tooltip** (`shadcn/ui`).
-* **Commands:**
-```bash
-npx shadcn@latest add "https://magicui.design/r/marquee.json"
-npx shadcn@latest add tooltip
-
-```
-
-
-* **Layout & Styling Specifications:**
-* **Structure:** Replace standard HTML `<ul>` elements with two horizontal marquee lanes moving in opposite directions (`speed="slow"` and `pauseOnHover`).
-* **Pill Card Styling:** `flex items-center gap-3 bg-neutral-900/60 border border-white/10 backdrop-blur-md rounded-xl px-5 py-3 hover:border-emerald-500/40 hover:bg-neutral-800/80 transition-all duration-300`.
-* **Content:** Combine high-res monochrome SVGs with text badges (LangGraph, FastAPI, Python, Postgres, pgvector, Neon, Langfuse, LiveKit, Groq, React, Vite).
-* **Hover Tooltips:** Hovering over any technology pill reveals a custom tooltip explaining its precise utility (e.g., *pgvector* ➔ *"Vector embeddings & cosine similarity retrieval for long-term agent memory"*).
-
-
-
----
-
-### Component 6: Footer & Contact Section
-
-* **Current Bug:** Basic static links with standard abrupt page scrolling.
-* **Exact Packages & Primitives:** **Lenis Smooth Scroll** (`@studio-freight/lenis`) + **Sonner Toast** (`shadcn/ui`).
-* **Commands:**
-```bash
-npm install @studio-freight/lenis
-npx shadcn@latest add sonner
-
-```
-
-
-* **Layout & Styling Specifications:**
-* **Display Typography CTA:** Giant, fluid display headline (`text-4xl md:text-7xl font-bold tracking-tight bg-gradient-to-b from-white to-neutral-500 bg-clip-text text-transparent`).
-* **1-Click Copy Email Button:** Clicking `ahmadimran67208@gmail.com` copies the email to clipboard and triggers a toast: `toast.success("Email copied to clipboard!", { description: "Looking forward to speaking with you." })`.
-* **Real-time PST Clock:** Include a dynamic widget in the bottom layout: `Gujranwala, PK — UTC+5 [14:28:59]`.
-* **Lenis Smooth Scroll Implementation:** Wrap the main app inside a client-side provider in `app/layout.tsx`:
-```tsx
-'use client';
-import { ReactLenis } from '@studio-freight/lenis/react';
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <ReactLenis root options={{ lerp: 0.08, duration: 1.2, smoothWheel: true }}>
-        <body>{children}</body>
-      </ReactLenis>
-    </html>
-  );
-}
-
-```
-
-
-
-
-
----
-
-## 3. Best Practices for Software Design & Architecture
-
-1. **Stateful Centralized Motion Token System (`lib/motion.ts`):**
-```ts
-export const TRANSITION_EASE = [0.16, 1, 0.3, 1]; // Custom cubic-bezier for luxury feel
-
-export const FADE_UP_VARIANT = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: TRANSITION_EASE } },
-};
-
-export const STAGGER_CONTAINER = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
-};
-
-```
-
-
-2. **Zero Layout Shift & Image Optimization:**
-* Force all image assets and video previews to render with explicit width/height parameters or Next.js `fill` mode inside a relative aspect-ratio container (`aspect-video` or `aspect-square`).
-* Load fonts via `next/font/google` or `next/font/local` using `display: 'swap'` and CSS variable definitions.
-
-
-3. **Performance & Bundle Budgeting:**
-* Target a 100/100 Lighthouse performance score by dynamically importing heavy canvas/particle shaders:
-```tsx
-import dynamic from 'next/dynamic';
-const AuroraBackground = dynamic(
-  () => import('@/components/ui/aurora-background').then((m) => m.AuroraBackground),
-  { ssr: false }
-);
-
-```
-
-
-
-
-
----
-
-## 4. Deliverables & Expected Output Matrix
-
-| Feature Module | Before Transformation | After Transformation |
-| --- | --- | --- |
-| **Navigation** | Crammed links & light switch colliding with hero. | Suspended glassmorphic pill with sliding tab indicator & theme switch. |
-| **Hero Section** | Next.js `N` button overlap; static dark background. | WebGL Aurora background, pulsing status ring, magnetic shimmer CTAs. |
-| **Projects Showcase** | Flat markdown text list with placeholder disclaimers. | Asymmetric Bento Grid, mouse-tracking spotlight glow, dynamic architecture beams. |
-| **"Now" Section** | Broken markdown rendering (`***Runa*** **, a custom...**`). | Interactive macOS-style status terminal with gradient text highlights. |
-| **Tech Stack** | Vertical bulleted HTML list with large whitespace. | Dual opposing infinite marquees with custom vector tooltips on hover. |
-| **Scroll Engine** | Basic browser scrolling. | Weightless inertial smooth-scrolling powered by Lenis. |
+- [ ] All five project cards show real data, real images, and a working "View Project →" button
+- [ ] Dynamic route `app/projects/[slug]/page.tsx` renders the correct project based on slug
+- [ ] Every project page has a working back button
+- [ ] SentryLoop, CogniLead, and Lumen pages have full real content in every section
+- [ ] Captur and AskMyDocs pages exist with the correct structure, sections left empty/placeholder rather than fabricated
+- [ ] Headings use Geist with tracking-tighter, no bold weight anywhere
+- [ ] Body text uses Inter
+- [ ] Fully responsive on mobile, tablet, and desktop
+- [ ] Image paths verified against actual filenames in `public/projects-pictures/`
