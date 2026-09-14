@@ -1,16 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { projects, Project } from "@/lib/constants";
-import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
+import { projects } from "@/lib/constants";
 import { FADE_UP_VARIANT, STAGGER_CONTAINER } from "@/lib/motion";
 import { ThreeDCardDemo } from "../ui/three-d-card";
-
-function ProjectCardItem({ project }: { project: Project }) {
-    return (
-        <ThreeDCardDemo />
-    );
-}
 
 export function ProjectsBento() {
     return (
@@ -39,7 +32,7 @@ export function ProjectsBento() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {projects.map((proj) => (
-                            <ProjectCardItem key={proj.name} project={proj} />
+                            <ThreeDCardDemo key={proj.name} project={proj} />
                         ))}
                     </div>
                 </motion.div>
