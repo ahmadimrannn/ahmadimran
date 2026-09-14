@@ -103,8 +103,8 @@ export const projects: Project[] = [
         problem: "Writing up meeting notes by hand after a call is slow and easy to skip, and skipped notes mean decisions and action items get lost. Most teams either don't do it consistently or spend real time doing it manually.",
         solution: "Captur takes a raw meeting transcript and processes it through a LangChain map-reduce pipeline to produce structured, organized minutes automatically, turning an unstructured recording into something a team can actually read and act on without anyone having to write it by hand.",
         bug: "Captur's frontend is a single-page app deployed on Vercel. Refreshing the page on any route other than the homepage, or sharing a direct link to a sub-route, returned a 404, because Vercel had no rewrite rule telling it every path should be served by the same file and handled client-side by the router. The first fix attempted, rewriting all paths directly to /index.html, didn't resolve it, refreshing on a sub-route still returned a 404. Changing the rewrite destination to / instead of /index.html fixed it, letting Vercel resolve the root path correctly before the SPA router took over client-side.",
-        decisions: "This project is old. I forgot to log any decision of mine at that time. I don't have them so I am keeping it empty and real instead of adding fake decisions, and fake details.",
-        lessons: "This project is old. I forgot to log any lessons of mine at that time. I don't have them so I am keeping it empty and real instead of adding fake lessons, and fake details.",
+        decisions: "",
+        lessons: "",
     },
     {
         path: "ask-my-docs",
@@ -117,9 +117,9 @@ export const projects: Project[] = [
         githubUrl: "https://github.com/ahmadimrannn/langchain_tutorial_with_projects/tree/main/projects/rag_knowledge_base_project",
         problem: "Finding a specific answer inside a long document usually means manually searching or reading through it, which doesn't scale once you're dealing with more than one document or a document you don't already know well.",
         solution: "AskMyDocs lets you upload documents and ask questions directly against their content. It embeds the document text with HuggingFace embeddings, indexes it with FAISS for retrieval, and uses Groq to generate an answer grounded in the specific chunks retrieved, rather than the model answering from general knowledge alone.",
-        bug: "This project is old. I forgot to log any bug and lesson of mine at that time. I don't have them so I am keeping it empty and real instead of adding fake bugs, lessons, and fake details.",
-        decisions: "This project is old. I forgot to log any decision of mine at that time. I don't have them so I am keeping it empty and real instead of adding fake decisions, and fake details.",
-        lessons: "This project is old. I forgot to log any lessons of mine at that time. I don't have them so I am keeping it empty and real instead of adding fake lessons, and fake details.",
+        bug: "",
+        decisions: "T",
+        lessons: "",
     },
 ];
 
