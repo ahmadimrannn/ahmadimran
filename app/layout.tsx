@@ -15,7 +15,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-    title: "Ahmad Imran — Agentic AI Engineer & Autonomous Systems",
+    title: "Ahmad Imran | Agentic AI Engineer & Autonomous Systems Architect",
     description:
         "Production portfolio of Ahmad Imran. Engineering autonomous multi-agent systems, LangGraph pipelines, real-time voice agents, and deterministic LLM architectures from 0 to 1.",
     keywords: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     ],
     authors: [{ name: "Ahmad Imran" }],
     openGraph: {
-        title: "Ahmad Imran — Agentic AI Engineer",
+        title: "Ahmad Imran | Agentic AI Engineer",
         description:
             "Engineering autonomous agency. From reactive LLMs to accountable execution.",
         type: "website",
@@ -48,7 +48,7 @@ export default function RootLayout({
             suppressHydrationWarning
             className={`${geistSans.variable} ${inter.variable} font-sans h-full antialiased`}
         >
-            <body className="min-h-screen bg-(--bg) text-(--text) transition-colors duration-300 selection:bg-emerald-500/30 selection:text-emerald-500">
+            <body className="min-h-screen bg-(--bg) text-(--text) transition-colors duration-300 selection:bg-emerald-500/30 selection:text-emerald-500" suppressHydrationWarning>
                 <ThemeProvider>
                     {children}
                     <Toaster position="bottom-right" richColors />
