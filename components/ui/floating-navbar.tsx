@@ -60,10 +60,11 @@ export function FloatingNavbar() {
       >
         <span className="font-mono font-medium text-sm tracking-tight flex items-center gap-1.5">
           <Image 
-            src={"/ahmad's_picture_header_portfolio.jpeg"}
+            src={"/ahmad-imran-header.png"}
             alt="Ahmad Imran Picture"
             width={40}
             height={30}
+            style={{ width: "100%", height: "auto" }}
             className="object-cover rounded-full"
           />
         </span>
