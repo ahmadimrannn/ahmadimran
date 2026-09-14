@@ -5,6 +5,7 @@ import { ProjectsBento } from "@/components/features/projects-bento";
 import { NowTerminal } from "@/components/features/now-terminal";
 import { TechMarquee } from "@/components/features/tech-marquee";
 import { ContactFooter } from "@/components/features/contact-footer";
+import HowIArchitect from "@/components/features/how-i-architect";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <ProjectsBento />
+        <HowIArchitect />
         <NowTerminal />
         <TechMarquee />
       </main>
