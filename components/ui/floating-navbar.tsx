@@ -48,7 +48,7 @@ export function FloatingNavbar() {
 
   return (
     <motion.header
-      className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-2xl bg-white/80 border border-neutral-200/80 text-neutral-900 shadow-md dark:bg-neutral-950/75 dark:border-white/10 dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] dark:text-white backdrop-blur-xl rounded-full px-5 py-2.5 flex items-center justify-between transition-colors duration-300"
+      className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-3xl bg-white/80 border border-neutral-200/80 text-neutral-900 shadow-md dark:bg-neutral-950/75 dark:border-white/10 dark:shadow-[0_0_30px_rgba(0,0,0,0.5)] dark:text-white backdrop-blur-xl rounded-full px-5 py-2.5 flex items-center justify-between transition-colors duration-300"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: hidden ? -100 : 0, opacity: hidden ? 0 : 1 }}
       transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}

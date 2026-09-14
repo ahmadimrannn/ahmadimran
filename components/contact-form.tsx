@@ -110,7 +110,7 @@ export function ContactForm({
 
                     <Field>
                         <FieldLabel htmlFor="email">
-                            Email 
+                            Email
                             <span className="text-red-600">
                                 *
                             </span>
@@ -142,17 +142,17 @@ export function ContactForm({
                         />
                     </Field>
 
-                    <Field className="space-y-2">
+                    <Field className="space-y-0">
                         <FieldLabel htmlFor="projectType">Project Type</FieldLabel>
-                        <Select name="projectType" defaultValue="Full-Stack Web App">
+                        <Select name="projectType">
                             <SelectTrigger
                                 id="projectType"
-                                className="h-10 w-full px-3 py-2 text-sm rounded-md border border-neutral-200 dark:border-white/10 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 focus:outline-hidden focus:ring-2 focus:ring-emerald-500/50 transition-colors"
+                                className="h-10 w-full px-3 py-2 text-sm rounded-md border border-neutral-200 dark:border-white/10 bg-transparent dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 focus:outline-hidden focus:ring-2 focus:ring-emerald-500/50 transition-colors"
                             >
-                                <SelectValue placeholder="Select project type" />
+                                <SelectValue placeholder="Select Project Type" />
                             </SelectTrigger>
 
-                            <SelectContent className="z-50 min-w-32 overflow-hidden rounded-md border border-neutral-200 dark:border-white/10 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 shadow-md data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=top]:slide-in-from-bottom-2">
+                            <SelectContent className="z-50 min-w-40 overflow-hidden rounded-md border border-neutral-200 bg-[rgb(250,250,248)] p-1 text-neutral-900 shadow-md transition-all dark:border-white/10 dark:bg-neutral-900 dark:text-neutral-100 data-[state=open]:opacity-100 data-[state=closed]:opacity-0 data-[state=open]:scale-100 data-[state=closed]:scale-95">
                                 <SelectItem value="AI Agent & Automation" className="py-2 px-3 cursor-pointer focus:bg-neutral-100 dark:focus:bg-neutral-800 focus:text-emerald-600 dark:focus:text-emerald-400">
                                     AI Agent / Automation Systems
                                 </SelectItem>
@@ -201,7 +201,7 @@ export function ContactForm({
                 )}
 
                 <Field>
-                    <Button type="submit"  className="w-full py-4 cursor-pointer">
+                    <Button type="submit" className="w-full py-4 cursor-pointer">
                         {isPending ? "Sending..." : "Send Message"}
                     </Button>
                 </Field>
