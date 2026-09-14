@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { ShimmerButton } from "@/components/ui/shimmer-button";
 import { FADE_UP_VARIANT, STAGGER_CONTAINER } from "@/lib/motion";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import Image from "next/image";
 
 export function HeroSection() {
     return (
@@ -14,7 +13,7 @@ export function HeroSection() {
         >
             {/* Blurred radial background - emerald tinted glow in both modes */}
             <div
-                className="pointer-events-none absolute -top-40 right-[-15%] w-[850px] h-[650px] rounded-full bg-radial from-emerald-200/50 via-emerald-100/20 to-transparent dark:from-[#013220] dark:via-[#012417] dark:to-transparent blur-[120px] opacity-75 transition-colors duration-500"
+                className="pointer-events-none absolute -top-40 right-[-15%] w-212.5 h-162.5 rounded-full bg-radial from-emerald-200/50 via-emerald-100/20 to-transparent dark:from-[#013220] dark:via-[#012417] dark:to-transparent blur-[120px] opacity-75 transition-colors duration-500"
                 aria-hidden="true"
             />
 
