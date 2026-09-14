@@ -87,7 +87,7 @@ export function ContactForm({
                 <div className="flex flex-col items-center gap-1 text-center">
                     <h1 className="text-3xl font-sans tracking-tight">Have a Project in Mind? Get in Touch</h1>
                     <p className="text-sm text-balance font-inter text-muted-foreground">
-                        Fill out the details below and I&apos;ll get back to you shortly.
+                        Fill out the details below and I&apos;ll get back to you shortly. Fields with * are required.
                     </p>
                 </div>
 
