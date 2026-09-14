@@ -93,7 +93,12 @@ export function ContactForm({
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Field>
-                        <FieldLabel htmlFor="name">Name</FieldLabel>
+                        <FieldLabel htmlFor="name">
+                            Name
+                            <span className="text-red-600">
+                                *
+                            </span>
+                        </FieldLabel>
                         <Input
                             id="name"
                             name="name"
@@ -104,7 +109,12 @@ export function ContactForm({
                     </Field>
 
                     <Field>
-                        <FieldLabel htmlFor="email">Email</FieldLabel>
+                        <FieldLabel htmlFor="email">
+                            Email 
+                            <span className="text-red-600">
+                                *
+                            </span>
+                        </FieldLabel>
                         <Input
                             id="email"
                             name="email"
@@ -117,7 +127,12 @@ export function ContactForm({
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <Field>
-                        <FieldLabel htmlFor="phone">Phone Number</FieldLabel>
+                        <FieldLabel htmlFor="phone">
+                            Phone Number
+                            <span className="text-red-600">
+                                *
+                            </span>
+                        </FieldLabel>
                         <Input
                             id="phone"
                             name="phone"

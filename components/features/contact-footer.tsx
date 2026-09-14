@@ -112,7 +112,7 @@ export function ContactFooter() {
                     </motion.div>
 
                     {/* Right Column: Contact Form */}
-                    <div className="w-full border rounded-2xl py-6 px-10">
+                    <div className="w-full border rounded-2xl py-8 px-12">
                         <ContactForm className="w-full" />
                     </div>
                 </div>
@@ -126,7 +126,7 @@ export function ContactFooter() {
                     className="pt-10 border-t border-neutral-200 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-500"
                 >
                     <span>© {new Date().getFullYear()} Ahmad Imran. All rights reserved.</span>
-                    <span>Gujranwala, Pakistan</span>
+                    <span>Pakistan</span>
                 </motion.div>
             </div>
         </footer>
