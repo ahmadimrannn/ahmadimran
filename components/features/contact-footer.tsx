@@ -112,7 +112,7 @@ export function ContactFooter() {
                     </motion.div>
 
                     {/* Right Column: Contact Form */}
-                    <div className="w-full border rounded-2xl py-8 px-12">
+                    <div className="w-full border rounded-xl px-6 py-8 md:py-8 md:px-12">
                         <ContactForm className="w-full" />
                     </div>
                 </div>
