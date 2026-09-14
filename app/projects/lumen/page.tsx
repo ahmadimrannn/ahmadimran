@@ -1,9 +1,8 @@
-const LumenProject = () => {
-    return (
-        <>
-            <p>This is the page of Lumen Project</p>
-        </>
-    )
-}
+import ProjectPageTemplate from "../ProjectPageTemplate";
+import { getProjectByPath } from "@/lib/constants";
 
-export default LumenProject
+export default function LumenPage() {
+  const project = getProjectByPath("lumen");
+  if (!project) return null;
+  return <ProjectPageTemplate project={project} />;
+}

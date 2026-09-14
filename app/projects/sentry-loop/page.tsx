@@ -1,9 +1,8 @@
-const SentryLoopProject = () => {
-    return (
-        <>
-            <p>This is the page of Sentry Loop Project</p>
-        </>
-    )
-}
+import ProjectPageTemplate from "../ProjectPageTemplate";
+import { getProjectByPath } from "@/lib/constants";
 
-export default SentryLoopProject
+export default function SentryLoopPage() {
+  const project = getProjectByPath("sentry-loop");
+  if (!project) return null;
+  return <ProjectPageTemplate project={project} />;
+}

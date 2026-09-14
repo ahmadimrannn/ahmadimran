@@ -28,7 +28,7 @@ export function HeroSection() {
                     {/* Headline with fixed punctuation and space */}
                     <motion.p
                         variants={FADE_UP_VARIANT}
-                        className="sm:mt-8 text-6xl lg:text-8xl font-geist tracking-tighter text-neutral-950 dark:text-white leading-[1.05] sm:leading-[0.90] max-w-4xl transition-colors duration-300"
+                        className="sm:mt-8 text-5xl md:text-6xl lg:text-8xl font-geist tracking-tighter text-neutral-950 dark:text-white leading-[1.05] sm:leading-[0.90] max-w-4xl transition-colors duration-300"
                     >
                         Engineering AI Agents for Real-World Action
                     </motion.p>
@@ -54,7 +54,7 @@ export function HeroSection() {
                                 shimmerColor="#34d399"
                                 className="font-medium text-sm sm:text-base px-7 py-3.5 flex items-center gap-2 shadow-md"
                             >
-                                <span>View Projects</span>
+                                <span>View My Work</span>
                                 <ArrowDown size={16} className="text-emerald-300" />
                             </ShimmerButton>
                         </a>
@@ -64,7 +64,7 @@ export function HeroSection() {
                             href="#contact"
                             className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-neutral-300 bg-white/70 hover:bg-neutral-100 text-neutral-900 shadow-sm dark:border-white/20 dark:bg-transparent dark:hover:bg-white/10 dark:text-white text-sm sm:text-base font-medium transition-colors"
                         >
-                            <span>Get in Touch</span>
+                            <span>Book A Call</span>
                             <ArrowUpRight size={16} className="text-neutral-500 dark:text-neutral-400" />
                         </a>
                     </motion.div>
