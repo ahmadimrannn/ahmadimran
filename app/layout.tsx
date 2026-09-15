@@ -36,6 +36,9 @@ export const metadata: Metadata = {
             "Engineering autonomous agency. From reactive LLMs to accountable execution.",
         type: "website",
     },
+    verification: {
+        google: "VMDzTCjPuPvMQv8nE4t_obHGaCBtmmY28Bm3IwrfeME",
+    },
 };
 
 export default function RootLayout({
