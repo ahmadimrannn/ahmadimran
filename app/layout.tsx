@@ -3,6 +3,7 @@ import { Geist, Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "sonner";
 import "./globals.css";
+import Script from "next/script";
 
 const geistSans = Geist({
     variable: "--font-geist",
@@ -48,6 +49,21 @@ export default function RootLayout({
             suppressHydrationWarning
             className={`${geistSans.variable} ${inter.variable} font-sans h-full antialiased`}
         >
+            <head>
+                <Script
+                    src="https://www.googletagmanager.com/gtag/js?id=G-T582FH00TY"
+                    strategy="afterInteractive"
+                />
+                <Script id="google-analytics" strategy="afterInteractive">
+                    {`
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+
+                    gtag('config', 'G-T582FH00TY');
+                `}
+                </Script>
+            </head>
             <body className="min-h-screen bg-(--bg) text-(--text) transition-colors duration-300 selection:bg-emerald-500/30 selection:text-emerald-500" suppressHydrationWarning>
                 <ThemeProvider>
                     {children}
