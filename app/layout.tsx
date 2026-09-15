@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Inter } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Analytics } from '@vercel/analytics/next';
 import { Toaster } from "sonner";
 import "./globals.css";
 import Script from "next/script";
@@ -18,7 +19,7 @@ const inter = Inter({
 export const metadata: Metadata = {
     title: "Ahmad Imran | Agentic AI Engineer & Autonomous Systems Architect",
     description:
-        "Production portfolio of Ahmad Imran. Engineering autonomous multi-agent systems, LangGraph pipelines, real-time voice agents, and deterministic LLM architectures from 0 to 1.",
+        "This is my production portfolio. I Engineer Autonomous multi-agent systems, LangGraph pipelines, real-time voice agents, and deterministic LLM architectures from 0 to 1.",
     keywords: [
         "Agentic AI Engineer",
         "LangGraph",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     openGraph: {
         title: "Ahmad Imran | Agentic AI Engineer",
         description:
-            "Engineering autonomous agency. From reactive LLMs to accountable execution.",
+            "Engineering AI Agents for Real-World Action",
         type: "website",
     },
     verification: {
@@ -72,6 +73,7 @@ export default function RootLayout({
                     {children}
                     <Toaster position="bottom-right" richColors />
                 </ThemeProvider>
+                <Analytics />
             </body>
         </html>
     );
