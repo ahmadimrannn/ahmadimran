@@ -2,7 +2,7 @@
 
 Personal portfolio site. I'm an AI engineer specializing in Agentic AI, based in Pakistan, currently building toward my first paid remote contractor or freelance engagement. I started in web development, moved through cloud computing, and shifted into agentic AI after a mentor pointed to it as the next real shift in the field, not just another framework to learn. My focus is on genuine dynamic agents, systems where an LLM decides what to do at runtime instead of following a fixed pipeline, built with real guardrails, evals, human-approval steps, and persistent memory. This site is a one-page overview of who I am and what I've built, with a dedicated detail page for each real, deployed project.
 
-**Live site:** [https://ahmadimran.vercel.app/]
+**Live site:** <a href="https://ahmadimran.vercel.app" target="_blank" >https://ahmadimran.vercel.app/</a>
 
 ---
 
