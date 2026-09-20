@@ -27,7 +27,7 @@ export function HeroSection() {
                     {/* Headline with fixed punctuation and space */}
                     <motion.p
                         variants={FADE_UP_VARIANT}
-                        className="sm:mt-8 text-5xl md:text-6xl lg:text-8xl font-geist tracking-tighter text-neutral-950 dark:text-white leading-[1.05] sm:leading-[0.90] max-w-4xl transition-colors duration-300"
+                        className="sm:mt-12 text-5xl md:text-6xl lg:text-8xl font-geist tracking-tighter text-neutral-950 dark:text-white leading-[1.05] sm:leading-[0.90] max-w-4xl transition-colors duration-300"
                     >
                         Engineering AI Agents for Real-World Action
                     </motion.p>
