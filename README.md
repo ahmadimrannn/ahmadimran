@@ -38,7 +38,7 @@ Each project card on the homepage links to a full detail page (`/projects/<proje
 - **Styling:** Tailwind CSS
 - **Components:** shadcn/ui as the base layer, with select components adapted from Magic UI, Aceternity UI, and 21st.dev
 - **Fonts:** Geist (headings, `tracking-tighter`, no bold weight) and Inter (body text)
-- **Motion:** Framer Motion, Lenis for smooth scroll
+- **Motion:** Framer Motion
 - **Deployment:** Vercel
 
 ## Design system
