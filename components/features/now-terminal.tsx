@@ -30,11 +30,10 @@ export function NowTerminal() {
             <Terminal tab="live_agent_status.sh — zsh">
               <p className="font-mono text-sm text-neutral-300 leading-relaxed">
                 <span className="text-emerald-400 font-medium">&gt; Currently building: </span>
-                <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-medium">
-                  Runa
+                <span className="bg-linear-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent font-medium">
+                  Triax Agent
                 </span>{" "}
-                — Custom AI voice agent for small businesses (restaurants &amp; dental clinics).
-                Automates phone call orders with real-time dialogue using LiveKit &amp; LangGraph.
+                — Multi-tenant AI agent that triages support tickets, retrieves answers from each company&apos;s own knowledge base, and drafts customer-ready resolutions, holding low-confidence responses for human approval instead of auto-sending them. Built with LangGraph for multi-agent orchestration, Postgres with pgvector for tenant-isolated retrieval, and an eval harness that grades draft quality against real resolved tickets, it&apos;s designed to show production-grade agentic AI: tool calling, human-in-the-loop review, observability, and per-tenant data isolation
               </p>
             </Terminal>
           </motion.div>
