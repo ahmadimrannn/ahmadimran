@@ -64,7 +64,7 @@ export function ContactForm({
                 }
 
                 toast.success("Message sent successfully!", {
-                    className: "font-geist",
+                    className: "font-manrope",
                     description: "Thank you for reaching out. I will get back to you as soon as possible.",
                 });
 
@@ -86,7 +86,7 @@ export function ContactForm({
             <FieldGroup>
                 <div className="flex flex-col items-center gap-1 text-center">
                     <h1 className="text-3xl font-sans tracking-tight">Have a Project in Mind? Get in Touch</h1>
-                    <p className="text-sm text-balance font-inter text-muted-foreground">
+                    <p className="text-sm text-balance font-geist text-muted-foreground">
                         Fill out the details below and I&apos;ll get back to you shortly. Fields with * are required.
                     </p>
                 </div>

@@ -21,7 +21,7 @@ export function ProjectsBento() {
                         <p className="text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-2">
                             [ Projects ]
                         </p>
-                        <h2 className="text-3xl sm:text-5xl font-geist font-medium tracking-tighter text-neutral-950 dark:text-white">
+                        <h2 className="text-3xl sm:text-5xl font-manrope font-medium tracking-tighter text-neutral-950 dark:text-white">
                             Projects I&apos;m proud of
                         </h2>
                         <p className="mt-4 text-base sm:text-lg text-neutral-600 dark:text-neutral-400">

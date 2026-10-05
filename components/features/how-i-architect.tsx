@@ -24,7 +24,7 @@ export function HowIArchitect() {
                     <p className="text-xs font-mono uppercase tracking-widest text-emerald-600 dark:text-emerald-400 mb-2">
                         [ Process ]
                     </p>
-                    <h2 className="font-geist text-3xl sm:text-4xl md:text-5xl font-normal tracking-tighter text-[#000000] dark:text-white">
+                    <h2 className="font-manrope text-3xl sm:text-4xl md:text-5xl font-normal tracking-tighter text-[#000000] dark:text-white">
                         How I Architect
                     </h2>
                 </div>
@@ -46,17 +46,17 @@ export function HowIArchitect() {
                             <div className="grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-8 items-start">
                                 {/* Step Number & Title */}
                                 <div className="md:col-span-5 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
-                                    <span className="font-geist text-sm sm:text-base font-normal text-[#A0A0A0] dark:text-neutral-500 tracking-tighter shrink-0">
+                                    <span className="font-manrope text-sm sm:text-base font-normal text-[#A0A0A0] dark:text-neutral-500 tracking-tighter shrink-0">
                                         {step.number}
                                     </span>
-                                    <h3 className="font-geist text-xl sm:text-2xl font-normal tracking-tighter text-[#000000] dark:text-neutral-100">
+                                    <h3 className="font-manrope text-xl sm:text-2xl font-normal tracking-tighter text-[#000000] dark:text-neutral-100">
                                         {step.title}
                                     </h3>
                                 </div>
 
                                 {/* Step Body Paragraph */}
                                 <div className="md:col-span-7 pt-1 md:pt-0">
-                                    <p className="font-inter text-base font-normal text-[#000000]/80 dark:text-neutral-400 leading-[1.6]">
+                                    <p className="font-geist text-base font-normal text-[#000000]/80 dark:text-neutral-400 leading-[1.6]">
                                         {step.body}
                                     </p>
                                 </div>

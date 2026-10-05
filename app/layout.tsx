@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Inter } from "next/font/google";
+import { Manrope, Geist } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from '@vercel/analytics/next';
 import { Toaster } from "sonner";
 import "./globals.css";
 import Script from "next/script";
 
+const manrope = Manrope({
+    variable: "--font-manrope",
+    subsets: ["latin"],
+});
+
 const geistSans = Geist({
     variable: "--font-geist",
     subsets: ["latin"],
 });
 
-const inter = Inter({
-    variable: "--font-inter",
-    subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
     title: "Ahmad Imran | Agentic AI Engineer & Autonomous Systems Architect",
@@ -51,7 +52,7 @@ export default function RootLayout({
         <html
             lang="en"
             suppressHydrationWarning
-            className={`${geistSans.variable} ${inter.variable} font-sans h-full antialiased`}
+            className={`${geistSans.variable} ${manrope.variable} font-sans h-full antialiased`}
         >
             <head>
                 <Script

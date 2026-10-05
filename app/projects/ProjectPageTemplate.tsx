@@ -11,14 +11,14 @@ export default function ProjectPageTemplate({ project }: ProjectPageTemplateProp
     const renderContentOrPlaceholder = (content?: string) => {
         if (!content || content.trim() === "") {
             return (
-                <p className="font-inter font-normal text-base leading-[1.6] text-[#5A5A5A] dark:text-[#A0A0A0] italic">
+                <p className="font-geist font-normal text-base leading-[1.6] text-[#5A5A5A] dark:text-[#A0A0A0] italic">
                     Content coming soon
                 </p>
             );
         }
 
         return (
-            <p className="font-inter font-normal text-base leading-[1.6] text-[#5A5A5A] dark:text-[#A0A0A0]">
+            <p className="font-geist font-normal text-base leading-[1.6] text-[#5A5A5A] dark:text-[#A0A0A0]">
                 {content}
             </p>
         );
@@ -31,7 +31,7 @@ export default function ProjectPageTemplate({ project }: ProjectPageTemplateProp
                 <div>
                     <Link
                         href="/#projects"
-                        className="inline-flex items-center gap-2 font-inter font-normal text-sm text-[#5A5A5A] dark:text-[#A0A0A0] hover:text-[#2CB86E] dark:hover:text-[#3DDC84] transition-colors"
+                        className="inline-flex items-center gap-2 font-geist font-normal text-sm text-[#5A5A5A] dark:text-[#A0A0A0] hover:text-[#2CB86E] dark:hover:text-[#3DDC84] transition-colors"
                     >
                         <svg
                             className="w-4 h-4"
@@ -49,10 +49,10 @@ export default function ProjectPageTemplate({ project }: ProjectPageTemplateProp
                 {/* Header Section */}
                 <header className="space-y-6">
                     <div className="space-y-2">
-                        <h1 className="font-geist text-3xl sm:text-4xl md:text-5xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
+                        <h1 className="font-manrope text-3xl sm:text-4xl md:text-5xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
                             {project.name}
                         </h1>
-                        <p className="font-inter text-lg sm:text-xl font-normal text-[#5A5A5A] dark:text-[#A0A0A0] leading-[1.6]">
+                        <p className="font-geist text-lg sm:text-xl font-normal text-[#5A5A5A] dark:text-[#A0A0A0] leading-[1.6]">
                             {project.tagline}
                         </p>
                     </div>
@@ -62,7 +62,7 @@ export default function ProjectPageTemplate({ project }: ProjectPageTemplateProp
                         {project.stack.map((item) => (
                             <span
                                 key={item}
-                                className="font-inter text-xs font-normal px-2.5 py-1 rounded-md bg-[#FFFFFF] dark:bg-[#0D0D0D] text-[#5A5A5A] dark:text-[#A0A0A0] border border-[#E5E5E0] dark:border-[#1A1A1A]"
+                                className="font-geist text-xs font-normal px-2.5 py-1 rounded-md bg-[#FFFFFF] dark:bg-[#0D0D0D] text-[#5A5A5A] dark:text-[#A0A0A0] border border-[#E5E5E0] dark:border-[#1A1A1A]"
                             >
                                 {item}
                             </span>
@@ -76,7 +76,7 @@ export default function ProjectPageTemplate({ project }: ProjectPageTemplateProp
                                 href={project.liveUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="font-inter text-sm font-normal px-4 py-2 rounded-md text-[#FFFFFF] dark:text-[#000000] transition-colors inline-flex items-center gap-1.5"
+                                className="font-geist text-sm font-normal px-4 py-2 rounded-md text-[#FFFFFF] dark:text-[#000000] transition-colors inline-flex items-center gap-1.5"
                             >
                                 <ShimmerButton>
                                     <span>Live Demo</span>
@@ -91,7 +91,7 @@ export default function ProjectPageTemplate({ project }: ProjectPageTemplateProp
                                 href={project.githubUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="font-inter text-sm font-normal px-6 py-3 rounded-full bg-[#FFFFFF] dark:bg-[#0D0D0D] text-[#0A0A0A] dark:text-[#F5F5F5] border border-[#E5E5E0] dark:border-[#252525] hover:border-[#2CB86E] dark:hover:border-[#3DDC84] hover:text-[#2CB86E] dark:hover:text-[#3DDC84] transition-colors inline-flex items-center gap-1.5"
+                                className="font-geist text-sm font-normal px-6 py-3 rounded-full bg-[#FFFFFF] dark:bg-[#0D0D0D] text-[#0A0A0A] dark:text-[#F5F5F5] border border-[#E5E5E0] dark:border-[#252525] hover:border-[#2CB86E] dark:hover:border-[#3DDC84] hover:text-[#2CB86E] dark:hover:text-[#3DDC84] transition-colors inline-flex items-center gap-1.5"
                             >
                                 <span>GitHub Repo</span>
                                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
@@ -118,7 +118,7 @@ export default function ProjectPageTemplate({ project }: ProjectPageTemplateProp
                 <div className="space-y-12 sm:space-y-16">
                     {/* The Problem */}
                     <section className="space-y-3">
-                        <h2 className="font-geist text-xl sm:text-2xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
+                        <h2 className="font-manrope text-xl sm:text-2xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
                             The Problem
                         </h2>
                         {renderContentOrPlaceholder(project.problem)}
@@ -126,7 +126,7 @@ export default function ProjectPageTemplate({ project }: ProjectPageTemplateProp
 
                     {/* The Solution */}
                     <section className="space-y-3">
-                        <h2 className="font-geist text-xl sm:text-2xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
+                        <h2 className="font-manrope text-xl sm:text-2xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
                             The Solution
                         </h2>
                         {renderContentOrPlaceholder(project.solution)}
@@ -134,14 +134,14 @@ export default function ProjectPageTemplate({ project }: ProjectPageTemplateProp
 
                     {/* Tech Stack Breakdown */}
                     <section className="space-y-3">
-                        <h2 className="font-geist text-xl sm:text-2xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
+                        <h2 className="font-manrope text-xl sm:text-2xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
                             Tech Stack
                         </h2>
                         <div className="flex flex-wrap gap-2 pt-1">
                             {project.stack.map((item) => (
                                 <span
                                     key={item}
-                                    className="font-inter text-sm font-normal px-3 py-1.5 rounded-md bg-[#FFFFFF] dark:bg-[#0D0D0D] text-[#0A0A0A] dark:text-[#F5F5F5] border border-[#E5E5E0] dark:border-[#1A1A1A]"
+                                    className="font-geist text-sm font-normal px-3 py-1.5 rounded-md bg-[#FFFFFF] dark:bg-[#0D0D0D] text-[#0A0A0A] dark:text-[#F5F5F5] border border-[#E5E5E0] dark:border-[#1A1A1A]"
                                 >
                                     {item}
                                 </span>
@@ -151,7 +151,7 @@ export default function ProjectPageTemplate({ project }: ProjectPageTemplateProp
 
                     {/* A Real Bug, In Detail */}
                     <section className="space-y-4 p-6 sm:p-8 rounded-lg bg-[#FFFFFF] dark:bg-[#0D0D0D] border border-[#E5E5E0] dark:border-[#1A1A1A]">
-                        <h2 className="font-geist text-xl sm:text-2xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
+                        <h2 className="font-manrope text-xl sm:text-2xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
                             A Real Bug, In Detail
                         </h2>
                         {renderContentOrPlaceholder(project.bug)}
@@ -159,7 +159,7 @@ export default function ProjectPageTemplate({ project }: ProjectPageTemplateProp
 
                     {/* Decisions and Tradeoffs */}
                     <section className="space-y-3">
-                        <h2 className="font-geist text-xl sm:text-2xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
+                        <h2 className="font-manrope text-xl sm:text-2xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
                             Decisions and Tradeoffs
                         </h2>
                         {renderContentOrPlaceholder(project.decisions)}
@@ -167,7 +167,7 @@ export default function ProjectPageTemplate({ project }: ProjectPageTemplateProp
 
                     {/* Lessons Learned */}
                     <section className="space-y-3">
-                        <h2 className="font-geist text-xl sm:text-2xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
+                        <h2 className="font-manrope text-xl sm:text-2xl font-normal tracking-tighter text-[#0A0A0A] dark:text-[#F5F5F5]">
                             Lessons Learned
                         </h2>
                         {renderContentOrPlaceholder(project.lessons)}

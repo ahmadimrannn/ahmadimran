@@ -53,7 +53,7 @@ export function TechMarquee() {
                     </motion.p>
                     <motion.h2
                         variants={FADE_UP_VARIANT}
-                        className="text-3xl sm:text-5xl font-geist font-medium tracking-tighter text-neutral-950 dark:text-white"
+                        className="text-3xl sm:text-5xl font-manrope font-medium tracking-tighter text-neutral-950 dark:text-white"
                     >
                         Core Technologies
                     </motion.h2>
